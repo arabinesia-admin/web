@@ -106,63 +106,6 @@ export default function Dashboard() {
         </div>
       </section>
 
-      <section id="blog" className="py-16 bg-white">
-        <div className="container mx-auto">
-          <h2 className="text-3xl font-bold text-gray-800 text-center mb-8">
-            اكتشف المزيد عن إندونيسيا
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 px-6">
-            <div className="bg-gray-100 p-6 rounded-lg shadow-sm">
-              <Image
-                src={"/images/blog2.webp"}
-                alt="Blog 2"
-                className="mb-4"
-                width={500}
-                height={500}
-              />
-              <h3 className="text-xl font-semibold text-emerald-500 mb-4">
-                5 أماكن يجب زيارتها في إندونيسيا
-              </h3>
-              <p className="text-gray-600 mb-4">
-                اكتشف أفضل الوجهات في إندونيسيا، من قلب يوجياكارتا الثقافي إلى
-                جزر كومودو الاستوائية.
-              </p>
-              <a
-                href="https://www.traveloka.com/id-id/explore/destination/destinasi-wisata-super-prioritas-indonesia-trp/78534"
-                className="text-emerald-500 hover:underline"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                اقرأ المزيد →
-              </a>
-            </div>
-            <div className="bg-gray-100 p-6 rounded-lg shadow-sm">
-              <Image
-                src={"/images/blog1.webp"}
-                alt="Blog 1"
-                className="mb-4"
-                width={350}
-                height={350}
-              />
-              <h3 className="text-xl font-semibold text-emerald-500 mb-4">
-                المطبخ الإندونيسي: رحلة مليئة بالنكهات
-              </h3>
-              <p className="text-gray-600 mb-4">
-                استكشف النكهات الغنية للطعام الإندونيسي، من الريندانغ الحار إلى
-                المارتاباك الحلو.
-              </p>
-              <a
-                href="https://www.traveloka.com/id-id/explore/culinary/kuliner-unik-di-indonesia-acc/79643"
-                className="text-emerald-500 hover:underline"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                اقرأ المزيد →
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
       <footer className="bg-gray-100 text-black">
         <div className="container mx-auto px-4 py-3">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
