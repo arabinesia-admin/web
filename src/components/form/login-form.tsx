@@ -34,6 +34,9 @@ export function LoginForm() {
       });
       const result = await response.json();
       if (result.message === "Login Success") {
+        if (typeof localStorage !== "undefined") {
+          localStorage.setItem("ALREADY_LOGIN", JSON.stringify(true));
+        }
         router.push("/dashboard");
       } else {
         setLognResult(result.message);

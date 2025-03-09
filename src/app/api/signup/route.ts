@@ -17,19 +17,6 @@ export async function POST(req: Request) {
       return NextResponse.json({ message: error.message }, { status: 400 });
     }
 
-    // Set cookies
-    const session = data.session;
-    if (session) {
-      const cookieStore = cookies();
-      cookieStore.set("supabase-auth-token", session.access_token, {
-        httpOnly: true,
-        secure: process.env.NODE_ENV === "production",
-        maxAge: session.expires_in,
-        path: "/",
-        sameSite: "lax",
-      });
-    }
-
     // Save additional data to users.profiles
     const user = data.user;
     if (user) {
