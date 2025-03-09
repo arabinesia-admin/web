@@ -1,5 +1,6 @@
 "use server";
-import { createClient } from "@/utils/supabase/server";
+import { createClient } from "@/lib/supabase/server";
+import { redirect } from "next/navigation";
 
 export async function getAuthUser() {
   const supabase = await createClient();
@@ -40,6 +41,19 @@ export async function checkAdmin() {
   const supabase = await createClient();
   const { data } = await supabase.from("users.admin").select("*");
   return data;
+}
+
+export async function signInWithGoogle() {
+  const supabase = await createClient();
+  const { data, error } = await supabase.auth.signInWithOAuth({
+    provider: "google",
+    options: {
+      redirectTo: "/dashboard",
+    },
+  });
+  if (data.url) {
+    redirect(data.url);
+  }
 }
 
 export async function logOut() {

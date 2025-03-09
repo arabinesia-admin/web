@@ -8,6 +8,7 @@ import {
   Tickets,
   UserRound,
   Presentation,
+  Copy,
 } from "lucide-react";
 
 type UserData = {
@@ -75,8 +76,13 @@ export function UserCard({ user }: { user: UserData }) {
           </div>
           <div className="flex items-center gap-2">
             <Tickets className="w-4 h-4 text-muted-foreground" />
-            <span className="p-1 bg-gray-200 text-black font-medium rounded-md">
-              باقات : {packageType}
+            <span className="text-black font-medium rounded-md">
+              باقات :{" "}
+              {packageType ? (
+                <span className="px-1 border-2 border-emerald-500 rounded">
+                  {packageType}
+                </span>
+              ) : null}
             </span>
           </div>
           <div className="flex items-center gap-2">
@@ -86,10 +92,11 @@ export function UserCard({ user }: { user: UserData }) {
           <div
             className="flex items-center gap-2"
             onClick={() => copyText(user.email)}
-            title="Klik untuk menyalin"
+            title="Click to copy email"
           >
             <Mail className="w-4 h-4 text-muted-foreground" />
             <span className="truncate">{user.email}</span>
+            <Copy className="w-4 h-4 text-muted-foreground cursor-pointer" />
           </div>
         </div>
       </CardContent>

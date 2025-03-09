@@ -1,6 +1,6 @@
 "use server";
 import { TLoginSchema } from "@/types/type";
-import { createClient } from "@/utils/supabase/server";
+import { createClient } from "@/lib/supabase/server";
 import { redirect } from "next/navigation";
 
 export async function getVideos(meeting: number) {
@@ -281,7 +281,7 @@ export async function handleSearch(query: string) {
   const { data, error } = await supabase
     .from("profiles")
     .select("*")
-    .ilike("full_name", `%${query}%`);
+    .ilike("email", `%${query}%`);
 
   if (error) {
     console.error("Error fetching profiles:", error.message);

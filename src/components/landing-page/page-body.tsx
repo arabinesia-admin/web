@@ -1,9 +1,9 @@
 export const PageBody = () => {
   return (
-    <div className="relative h-screen">
+    <header className="relative h-screen">
       <div
         className="bg-cover bg-center h-full -mt-60  md:-mt-24 "
-        style={{ backgroundImage: "url('/images/arabinesia-cover.webp')" }}
+        style={{ backgroundImage: "url('/images/arabinesia-cover.avif')" }}
       ></div>
       <div className="main-title absolute inset-0 flex items-center justify-start mx-64">
         <div className="text-center">
@@ -15,6 +15,6 @@ export const PageBody = () => {
           </h1>
         </div>
       </div>
-    </div>
+    </header>
   );
 };

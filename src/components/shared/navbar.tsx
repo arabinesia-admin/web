@@ -13,12 +13,15 @@ import {
   SheetContent,
   SheetTrigger,
   SheetTitle,
-  SheetDescription,
 } from "@/components/ui/sheet";
 import { LogIn, Menu, X } from "lucide-react";
 import Image from "next/image";
 
-export default function Navbar() {
+export default function Navbar({
+  isAuthenticated,
+}: {
+  isAuthenticated: boolean;
+}) {
   const navLinks = [
     { name: "نبذة عن الدورة", href: "/#about" },
     { name: "الدورة", href: "/#about-class" },
@@ -46,6 +49,7 @@ export default function Navbar() {
                 className="font-rubik font-bold text-sm text-emerald-500 rounded-full hover:bg-emerald-500 hover:text-slate-50"
                 key={link.href}
                 variant="ghost"
+                aria-label={link.name}
                 asChild
               >
                 <Link href={link.href}>{link.name}</Link>
@@ -57,6 +61,7 @@ export default function Navbar() {
                 <Button
                   className="border-brand-primary text-brand-primary font-rubik font-semibold hover:text-white hover:bg-brand-primary"
                   variant="outline"
+                  aria-label="Dropdown Menu"
                 >
                   أدخل
                 </Button>
@@ -75,7 +80,7 @@ export default function Navbar() {
           </div>
 
           <Sheet>
-            <SheetTrigger className="md:hidden">
+            <SheetTrigger aria-label="Navigation Button" className="md:hidden">
               <Menu className="h-6 w-6" />
             </SheetTrigger>
             <SheetContent side="right" className="w-[300px] bg-slate-50">
@@ -86,18 +91,31 @@ export default function Navbar() {
                     className="font-rubik hover:bg-emerald-500 hover:text-slate-50"
                     key={link.href}
                     variant="ghost"
+                    aria-label={link.name}
                     asChild
                   >
                     <Link href={link.href}>{link.name}</Link>
                   </Button>
                 ))}
-                <Link
-                  className="flex flex-row gap-4 items-center justify-center font-rubik border-brand-primary border-2 rounded-lg p-3"
-                  href="/login"
-                >
-                  {" "}
-                  <LogIn /> أدخل
-                </Link>
+                {isAuthenticated ? (
+                  <Link
+                    className="flex flex-row gap-4 items-center justify-center font-rubik border-brand-primary border-2 rounded-lg p-3"
+                    href="/dashboard"
+                    aria-label="To the Dashboard"
+                  >
+                    {" "}
+                    <LogIn /> أدخل
+                  </Link>
+                ) : (
+                  <Link
+                    className="flex flex-row gap-4 items-center justify-center font-rubik border-brand-primary border-2 rounded-lg p-3"
+                    href={"/login"}
+                    aria-label="Login Button"
+                  >
+                    <LogIn /> أدخل
+                  </Link>
+                )}
+
                 <SheetTrigger className="absolute top-4 right-4"></SheetTrigger>
               </div>
             </SheetContent>

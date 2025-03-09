@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { AlertDialog } from "./alert-dialog";
-import { createClient } from "@/utils/supabase/client";
+import { createClient } from "@/lib/supabase/client";
 
 export function LogoutButton() {
   const [isAlertOpen, setIsAlertOpen] = useState(false);

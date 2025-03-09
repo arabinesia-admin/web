@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { getAuthUser, getProfiles } from "@/lib/auth";
+import { getAuthUser, getProfiles } from "@/actions/auth";
 
 type Profile = {
   id: string;

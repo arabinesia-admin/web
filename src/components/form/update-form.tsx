@@ -25,7 +25,7 @@ export function UpdateForm() {
       setErrorMessage("");
       setResult("");
       const response = await fetch("/api/update", {
-        method: "PUT",
+        method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
       });

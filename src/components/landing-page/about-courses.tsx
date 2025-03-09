@@ -7,9 +7,9 @@ export const AboutCourses = () => {
       className="flex justify-center items-center bg-slate-50 min-h-screen mb-5"
     >
       <div className="flex flex-col items-center mt-5">
-        <h1 className="mb-10 ">
+        <h2 className="mb-10 ">
           <span className=" text-teal-500">ARABINESIA</span> دورة
-        </h1>
+        </h2>
         <div className="flex flex-row flex-wrap justify-center gap-8">
           <div className="card1 flex flex-col justify-center items-center gap-8 border-2 border-solid border-slate-500 rounded-xl w-96 h-96 drop-shadow-xl hover:bg-emerald-500 hover:text-white hover:border-0 hover:shadow-xl transition-colors duration-500">
             <Image src="/svg/user.svg" alt="user" width={50} height={50} />
@@ -29,7 +29,7 @@ export const AboutCourses = () => {
               width={50}
               height={50}
             />
-            <h1 className="font-tajawal text-2xl font-md">طريقة الدراسة</h1>
+            <h2 className="font-tajawal text-2xl font-md">طريقة الدراسة</h2>
             <div className="flex flex-col items-center w-full max-w-72 text-right rtl">
               <p className="text-center text-xl font-arabic">
                 تعتمد طريقة التعليم في دورة <span>ARABINESIA</span> على
@@ -45,7 +45,7 @@ export const AboutCourses = () => {
               width={50}
               height={50}
             />
-            <h1 className="font-tajawal text-2xl font-md">المواد التعليمية</h1>
+            <h2 className="font-tajawal text-2xl font-md">المواد التعليمية</h2>
             <div className="flex flex-col items-center w-full max-w-72 text-right rtl">
               <p className="text-center text-xl font-arabic">
                 تم تطوير المواد التعليمية ومقاطع الفيديو والتمارين وفقًا لنموذج

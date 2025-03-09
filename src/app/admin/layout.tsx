@@ -3,18 +3,19 @@ import { useEffect } from "react";
 import { MobileSidebar, Sidebar } from "@/components/shared/sidebar";
 import { useProfileStore } from "@/lib/store";
 import CustomLoading from "@/components/ui/custom-loading";
-import { BookOpen, Home, PencilIcon } from "lucide-react";
+import { BookOpen, Home, PencilIcon, UserCog } from "lucide-react";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const sidebarItems = [
     { name: "Home Page", href: "/dashboard", icon: Home },
     { name: "Class", href: "/dashboard/class", icon: BookOpen },
     { name: "Assessment", href: "/dashboard/assessment", icon: PencilIcon },
+    { name: "Users", href: "/admin", icon: UserCog },
   ];
   const { fetchProfile, loading } = useProfileStore();
 
   useEffect(() => {
-    fetchProfile(); // Fetch profile sekali
+    fetchProfile();
   }, [fetchProfile]);
 
   if (loading) {

@@ -7,10 +7,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import LogInWithGoogle from "../login-google";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { loginSchema, TLoginSchema } from "@/types/type";
+import LogInWithGoogle from "../login-google";
 
 export function LoginForm() {
   const router = useRouter();
@@ -130,7 +130,7 @@ export function LoginForm() {
         </CardContent>
       </Card>
       <div className="text-balance text-center text-xs text-muted-foreground [&_a]:underline [&_a]:underline-offset-4 hover:[&_a]:text-primary">
-        By clicking login, you agree to our
+        By clicking continue, you agree to our
         <Link
           className="mx-1"
           href="/terms"

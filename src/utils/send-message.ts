@@ -1,4 +1,4 @@
-import { TSignUpSchema, TWhatsappData } from "@/types/type";
+import { TWhatsappData } from "@/types/type";
 
 export function sendDataToWhatsapp(data: TWhatsappData) {
   const RLE = "\u202B";
