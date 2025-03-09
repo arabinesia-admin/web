@@ -10,9 +10,14 @@ import {
   Twitter,
   Youtube,
 } from "lucide-react";
-import Image from "next/image";
+import { Metadata } from "next";
 import Link from "next/link";
 import React from "react";
+
+export const metadata: Metadata = {
+  title: "Home",
+  description: "الدافع وأيضا المزايا في تعلم اللغة الإندونيسية",
+};
 
 export default function Dashboard() {
   return (
@@ -21,7 +26,7 @@ export default function Dashboard() {
         id="home"
         className="bg-cover bg-center h-screen flex items-center relative"
         style={{
-          backgroundImage: "url('/images/coffee-book.webp')",
+          backgroundImage: "url('/images/coffee-book.avif')",
         }}
       >
         <div className="absolute inset-0 bg-black opacity-50"></div>
@@ -108,7 +113,7 @@ export default function Dashboard() {
 
       <footer className="bg-gray-100 text-black">
         <div className="container mx-auto px-4 py-3">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-2">
             <div>
               <h4 className="text-lg font-semibold text-emerald-500 mb-4">
                 لديك أسئلة؟
@@ -147,9 +152,7 @@ export default function Dashboard() {
           </div>
           <Separator />
           <div className="mt-2 py-4 text-center text-sm">
-            <p>
-              &copy; {new Date().getFullYear()} ARABINESIA جميع الحقوق محفوظة.
-            </p>
+            <p>&copy; 2025 ARABINESIA جميع الحقوق محفوظة.</p>
           </div>
         </div>
       </footer>

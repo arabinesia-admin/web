@@ -3,22 +3,19 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import {
   Sheet,
   SheetContent,
   SheetTrigger,
   SheetTitle,
-  SheetDescription,
 } from "@/components/ui/sheet";
 import { LogIn, Menu, X } from "lucide-react";
 import Image from "next/image";
 
-export default function PageNavbar() {
+export default function PageNavbar({
+  isAuthenticated,
+}: {
+  isAuthenticated: boolean;
+}) {
   const navLinks = [
     { name: "نبذة عن الدورة", href: "#about" },
     { name: "الدورة", href: "#about-courses" },
@@ -46,23 +43,37 @@ export default function PageNavbar() {
                 className="font-rubik font-bold text-sm text-emerald-500 rounded-full hover:bg-emerald-500 hover:text-slate-50"
                 key={link.href}
                 variant="ghost"
+                aria-label={link.name}
                 asChild
               >
                 <Link href={link.href}>{link.name}</Link>
               </Button>
             ))}
-            <Link href={"/dashboard"}>
-              <Button
-                className="border-brand-primary text-brand-primary font-rubik font-semibold hover:text-white hover:bg-brand-primary"
-                variant="outline"
-              >
-                أدخل
-              </Button>
-            </Link>
+            {isAuthenticated ? (
+              <Link href={"/dashboard"}>
+                <Button
+                  className="border-brand-primary text-brand-primary font-rubik font-semibold hover:text-white hover:bg-brand-primary"
+                  variant="outline"
+                  aria-label="To the Dashboard"
+                >
+                  أدخل
+                </Button>
+              </Link>
+            ) : (
+              <Link href={"/login"}>
+                <Button
+                  className="border-brand-primary text-brand-primary font-rubik font-semibold hover:text-white hover:bg-brand-primary"
+                  variant="outline"
+                  aria-label="Login"
+                >
+                  أدخل
+                </Button>
+              </Link>
+            )}
           </div>
 
           <Sheet>
-            <SheetTrigger className="md:hidden">
+            <SheetTrigger className="md:hidden" aria-label="Navigation button">
               <Menu className="h-6 w-6" />
             </SheetTrigger>
             <SheetContent side="right" className="w-[300px] bg-slate-50">
@@ -73,18 +84,28 @@ export default function PageNavbar() {
                     className="font-rubik hover:bg-emerald-500 hover:text-slate-50"
                     key={link.href}
                     variant="ghost"
+                    aria-label={link.name}
                     asChild
                   >
                     <Link href={link.href}>{link.name}</Link>
                   </Button>
                 ))}
-                <Link
-                  className="flex flex-row gap-4 items-center justify-center font-rubik border-brand-primary border-2 rounded-lg p-3"
-                  href="/dashboard"
-                >
-                  {" "}
-                  <LogIn /> أدخل
-                </Link>
+                {isAuthenticated ? (
+                  <Link
+                    className="flex flex-row gap-4 items-center justify-center font-rubik border-brand-primary border-2 rounded-lg p-3"
+                    href="/dashboard"
+                  >
+                    {" "}
+                    <LogIn /> أدخل
+                  </Link>
+                ) : (
+                  <Link
+                    href={"/login"}
+                    className="flex flex-row gap-4 items-center justify-center font-rubik border-brand-primary border-2 rounded-lg p-3"
+                  >
+                    <LogIn /> أدخل
+                  </Link>
+                )}
                 <SheetTrigger className="absolute top-4 right-4"></SheetTrigger>
               </div>
             </SheetContent>

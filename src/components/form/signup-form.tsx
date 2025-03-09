@@ -202,7 +202,7 @@ export function SignUpForm() {
                 />
               </div>
               {errors.phone_number && (
-                <p className="text-red-500">Input must be a number</p>
+                <p className="text-red-500">( + ) Input must start with</p>
               )}
             </div>
 
@@ -242,7 +242,6 @@ export function SignUpForm() {
               <input
                 {...register("password")}
                 type={showPassword ? "text" : "password"}
-                placeholder="Insert Email Password"
                 className="w-full border border-gray-500 px-4 py-2 rounded text-right"
               />
               {errors.password && (

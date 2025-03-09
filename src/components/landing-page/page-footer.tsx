@@ -3,7 +3,7 @@ import Image from "next/image";
 export const Footer = () => {
   return (
     <>
-      <div
+      <footer
         id="footer"
         className="flex justify-center items-center mb-20 font-arabic bg-gradient-to-r from-emerald-400 to-teal-500"
       >
@@ -17,7 +17,7 @@ export const Footer = () => {
             </div>
           </div>
         </div>
-      </div>
+      </footer>
       <div className="flex flex-col justify-center mb-8 items-center gap-14">
         <div className="social-media flex flex-row justify-center items-center gap-14">
           <a

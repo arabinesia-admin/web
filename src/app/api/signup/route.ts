@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
-import { createClient } from "@/utils/supabase/server";
+import { createClient } from "@/lib/supabase/server";
 import { TSignUpSchema } from "@/types/type";
-import { setUserSequence } from "@/actions/action";
+import { cookies } from "next/headers";
 
 export async function POST(req: Request) {
   try {
@@ -15,6 +15,19 @@ export async function POST(req: Request) {
 
     if (error) {
       return NextResponse.json({ message: error.message }, { status: 400 });
+    }
+
+    // Set cookies
+    const session = data.session;
+    if (session) {
+      const cookieStore = cookies();
+      cookieStore.set("supabase-auth-token", session.access_token, {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === "production",
+        maxAge: session.expires_in,
+        path: "/",
+        sameSite: "lax",
+      });
     }
 
     // Save additional data to users.profiles
@@ -38,9 +51,8 @@ export async function POST(req: Request) {
         .from("video_progress")
         .insert([{ user_id: user.id, video_sequence: 1 }])
         .select();
-      console.log("Server :", sequenceUpdate);
       if (error) {
-        return NextResponse.json({ message: error.message }, { status: 400 });
+        return NextResponse.json({ message: sequenceUpdate }, { status: 400 });
       }
       return NextResponse.json({ user }, { status: 201 });
     }

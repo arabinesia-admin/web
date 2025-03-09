@@ -1,8 +1,8 @@
 import { TUpdateSchema } from "@/types/type";
-import { createClient } from "@/utils/supabase/server";
+import { createClient } from "@/lib/supabase/server";
 import { NextResponse } from "next/server";
 
-export async function PUT(req: Request) {
+export async function PATCH(req: Request) {
   try {
     const body: TUpdateSchema = await req.json();
     const { email, meeting, package_level } = body;

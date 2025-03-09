@@ -5,9 +5,15 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "ARABINESIA",
+  title: {
+    default: "ARABINESIA | تعليم اللغة الإندونيسية للناطقين بالعربية",
+    template: "%s - ARABINESIA",
+  },
   icons: "/favicon.ico",
+  description:
+    "ARABINESIA - منصة تعليمية متكاملة لتعليم اللغة الإندونيسية للناطقين بالعربية. دورات تفاعلية، دروس مباشرة، وتمارين عملية لمساعدتك على تعلم الإندونيسية بسهولة وسرعة. انضم الآن وابدأ رحلتك التعليمية!",
 };
+
 export default function RootLayout({
   children,
 }: Readonly<{

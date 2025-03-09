@@ -5,6 +5,7 @@ import { YoutubeVideos } from "@/types/type";
 import { useEffect, useState } from "react";
 import CustomLoading from "./ui/custom-loading";
 import { useProfileStore } from "@/lib/store";
+import Link from "next/link";
 
 export const RenderVideos = () => {
   const [videos, setVideos] = useState<YoutubeVideos[]>([]);
@@ -75,9 +76,13 @@ export const RenderVideos = () => {
     return <CustomLoading />;
   }
 
-  if (error) {
+  if (error || !profile) {
     return (
-      <p className="flex justify-center items-center text-red-500">{error}</p>
+      <Link href={"/signup"}>
+        <p className="flex font-arabic justify-center items-center text-red-500 border-red-500 border bg-red-100 py-2 rounded">
+          {error ? error : "اشترِ الباقة أولاً لمشاهدة المحتوى"}
+        </p>
+      </Link>
     );
   }
 

@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
-import { createClient } from "@/utils/supabase/server";
+import { createClient } from "@/lib/supabase/server";
 import { TLoginSchema } from "@/types/type";
+import { cookies } from "next/headers";
 
 export async function POST(req: NextRequest) {
   try {
@@ -19,6 +20,18 @@ export async function POST(req: NextRequest) {
         { message: "Invalid Email or Password", error: true },
         { status: 401 }
       );
+    }
+
+    // Set Cookies
+    const session = data.session;
+    if (session) {
+      const cookieStore = cookies();
+      cookieStore.set("supabase-auth-token", session.access_token, {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === "production",
+        maxAge: session.expires_in,
+        path: "/",
+      });
     }
 
     // Check Profile

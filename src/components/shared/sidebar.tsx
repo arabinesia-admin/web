@@ -1,14 +1,6 @@
 "use client";
 import Link from "next/link";
-import {
-  Menu,
-  BookOpen,
-  PencilIcon,
-  Home,
-  UserRound,
-  CalendarFold,
-  Tickets,
-} from "lucide-react";
+import { Menu, UserRound, CalendarFold, Tickets } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
@@ -17,11 +9,11 @@ import { LogoutButton } from "../ui/logout-button";
 import { useProfileStore } from "@/lib/store";
 import { Separator } from "../ui/separator";
 
-const sidebarItems = [
-  { name: "Home Page", href: "/dashboard", icon: Home },
-  { name: "Class", href: "/dashboard/class", icon: BookOpen },
-  { name: "Assessment", href: "/dashboard/assessment", icon: PencilIcon },
-];
+type SidebarItems = {
+  name: string;
+  href: string;
+  icon: React.ComponentType<{ className?: string }>;
+};
 
 const SidebarButton = ({
   className,
@@ -29,6 +21,7 @@ const SidebarButton = ({
 }: React.ComponentProps<typeof Button>) => (
   <Button
     variant="ghost"
+    aria-label="Sidebar button"
     className={cn(
       "w-full justify-start border border-gray-200 hover:bg-emerald-500 hover:text-white",
       className
@@ -37,7 +30,7 @@ const SidebarButton = ({
   />
 );
 
-export function Sidebar() {
+export function Sidebar({ sidebarItems }: { sidebarItems: SidebarItems[] }) {
   const { profile } = useProfileStore();
   const packageType =
     profile?.package_level === 1
@@ -101,10 +94,24 @@ export function Sidebar() {
               <div className="flex gap-2 text-sm font-arabic">
                 <Tickets size={20} />
                 Package :{" "}
-                <p className="px-1 rounded bg-gray-200">{packageType}</p>
+                <p className="px-1 rounded border-2 border-emerald-500">
+                  {packageType ? packageType : "none"}
+                </p>
               </div>
             </div>
-            <LogoutButton />
+            {profile ? (
+              <LogoutButton />
+            ) : (
+              <Link href={"/login"} className="flex items-center w-full">
+                <Button
+                  className="flex w-full"
+                  variant="default"
+                  aria-label="logout button"
+                >
+                  Login
+                </Button>
+              </Link>
+            )}
           </div>
         </SheetContent>
       </Sheet>
@@ -112,7 +119,11 @@ export function Sidebar() {
   );
 }
 
-export function MobileSidebar() {
+export function MobileSidebar({
+  sidebarItems,
+}: {
+  sidebarItems: SidebarItems[];
+}) {
   return (
     <Sheet>
       <SheetTrigger asChild>
@@ -122,7 +133,7 @@ export function MobileSidebar() {
         </Button>
       </SheetTrigger>
       <SheetContent side="left" className="w-[300px] sm:w-[300px] mb-16">
-        <Sidebar />
+        <Sidebar sidebarItems={sidebarItems} />
       </SheetContent>
     </Sheet>
   );

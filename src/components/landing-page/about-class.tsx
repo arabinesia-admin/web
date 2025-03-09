@@ -6,8 +6,8 @@ export const AboutClass = () => {
     >
       <div className="justify-center mt-28 text-slate-50 ">
         <div className="flex justify-center gap-5 mb-10">
-          <h1>ARABINESIA</h1>
-          <h1>فصول</h1>
+          <h2>ARABINESIA</h2>
+          <h2>فصول</h2>
         </div>
         <div className="flex flex-row flex-wrap items-center justify-center gap-16">
           <div className="flex flex-col items-center w-full max-w-80 mb-28 text-right rtl font-arabic">
