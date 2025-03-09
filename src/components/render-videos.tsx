@@ -24,7 +24,7 @@ export const RenderVideos = () => {
             profile.id
           );
           if (success === false) {
-            setError("Error fetching videos. Please try again later1");
+            setError("اشترِ الباقة أولاً لمشاهدة المحتوى");
             return;
           }
 
@@ -32,7 +32,7 @@ export const RenderVideos = () => {
             profile.meeting
           );
           if (videosError) {
-            setError("Error fetching videos. Please try again later2");
+            setError("اشترِ الباقة أولاً لمشاهدة المحتوى");
             return;
           }
 

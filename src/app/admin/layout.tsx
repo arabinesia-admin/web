@@ -8,9 +8,7 @@ import { BookOpen, Home, PencilIcon, UserCog } from "lucide-react";
 export default function Layout({ children }: { children: React.ReactNode }) {
   const sidebarItems = [
     { name: "Home Page", href: "/dashboard", icon: Home },
-    { name: "Class", href: "/dashboard/class", icon: BookOpen },
-    { name: "Assessment", href: "/dashboard/assessment", icon: PencilIcon },
-    { name: "Users", href: "/admin", icon: UserCog },
+    { name: "User Profile", href: "/admin", icon: UserCog },
   ];
   const { fetchProfile, loading } = useProfileStore();
 

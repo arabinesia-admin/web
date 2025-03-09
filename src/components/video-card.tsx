@@ -33,25 +33,24 @@ export function VideoCard({
   const { profile } = useProfileStore();
 
   return (
-    <Card className="w-full max-w-sm overflow-hidden">
+    <Card className="w-full max-w-sm overflow-hidden shadow-xl ">
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
-        <DialogTrigger asChild>
-          <a className="cursor-pointer">
-            <Image
-              src={thumbnailUrl || "/placeholder.svg"}
-              alt={title}
-              width={384}
-              height={216}
-              layout="responsive"
-            />
-          </a>
-        </DialogTrigger>
+        <a className="block relative w-full h-40">
+          <Image
+            src={thumbnailUrl || "/placeholder.svg"}
+            alt={title}
+            className="object-cover"
+            sizes="425px"
+            layout="fill"
+            loading="lazy"
+          />
+        </a>
         <DialogContent className="sm:max-w-[425px]">
           <YouTube
             videoId={youtubeVideoId}
             opts={{
               width: "100%",
-              height: "315",
+              height: "300",
               playerVars: {
                 autoplay: 1,
               },
@@ -63,7 +62,7 @@ export function VideoCard({
         <h3 className="text-lg font-semibold my-2">{title}</h3>
         <p className="text-sm text-gray-600 my-2">{description}</p>
       </CardContent>
-      <CardFooter className="flex justify-between items-center p-4 bg-gray-100">
+      <CardFooter className="flex justify-between items-center p-2 bg-gray-100">
         {/* Cek isCompleted to avoid update unusual data */}
         {updateLink === true ? (
           <Button

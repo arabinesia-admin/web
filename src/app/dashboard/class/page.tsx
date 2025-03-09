@@ -1,4 +1,10 @@
 import { RenderVideos } from "@/components/render-videos";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Class",
+  description: "الدافع وأيضا المزايا في تعلم اللغة الإندونيسية",
+};
 
 export default function Class() {
   return (

@@ -16,7 +16,7 @@ export const ClassPackage = () => {
           className="card1 flex flex-col justify-center items-center gap-8 border-2 border-solid border-slate-500 rounded-xl w-80 h-128 drop-shadow-xl transition-colors duration-500 group hover:bg-gradient-to-r from-teal-700 to hover:bg-emerald-500 hover:text-white hover:border-0 hover:shadow-xl"
           initial={{ opacity: 0, x: 50 }}
           whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1, delay: 2 }}
+          transition={{ duration: 1, delay: 1.5 }}
           viewport={{ once: true }}
         >
           <h2 className="font-arabic">شهرية</h2>
@@ -76,7 +76,7 @@ export const ClassPackage = () => {
           className="card1 flex flex-col justify-center items-center gap-8 border-2 border-solid border-slate-500 rounded-xl w-80 h-128 drop-shadow-xl transition-colors duration-500 group hover:bg-gradient-to-r from-teal-700 to hover:bg-emerald-500 hover:text-white hover:border-0 hover:shadow-xl"
           initial={{ opacity: 0, x: 50 }}
           whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1, delay: 0 }}
+          transition={{ duration: 1, delay: 0.5 }}
           viewport={{ once: true }}
         >
           <h2 className="font-arabic">باقات كاملة</h2>
