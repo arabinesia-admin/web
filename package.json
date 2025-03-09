@@ -31,6 +31,7 @@
     "dropdown-menu": "^0.1.1",
     "libphonenumber-js": "^1.11.20",
     "lucide-react": "^0.474.0",
+    "motion": "^12.4.10",
     "next": "^14.2.23",
     "popover": "^2.4.1",
     "react": "^18",
