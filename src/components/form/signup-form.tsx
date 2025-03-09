@@ -23,7 +23,7 @@ export function SignUpForm() {
   const [countryData, setCountryData] = React.useState<CountryData>();
   const [isTermsChecked, setIsTermsChecked] = useState(false);
   const [successSignup, setSuccessSignup] = useState(false);
-  const [waData, setWaData] = useState<TWhatsappData>({});
+  const [waData, setWaData] = useState<TWhatsappData>();
 
   const {
     register,
