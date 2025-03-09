@@ -164,7 +164,13 @@ export function SignUpForm() {
                 <span>Admin Contact:</span>
                 <a
                   className="underline text-blue-500 cursor-pointer"
-                  onClick={() => sendDataToWhatsapp(waData)}
+                  onClick={() => {
+                    if (waData) {
+                      sendDataToWhatsapp(waData);
+                    } else {
+                      alert("No data available to send.");
+                    }
+                  }}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
