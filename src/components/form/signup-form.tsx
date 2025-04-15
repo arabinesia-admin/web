@@ -11,7 +11,6 @@ import { sendDataToWhatsapp } from "@/utils/send-message";
 import { Country, CountryDropdown } from "@/components/country-dropdown";
 import { PhoneInput, CountryData } from "@/components/phone-input";
 import Link from "next/link";
-import { TriangleAlert } from "lucide-react";
 import { Separator } from "../ui/separator";
 
 export function SignUpForm() {
@@ -87,21 +86,24 @@ export function SignUpForm() {
       name: "شهرية",
       description:
         "المدة 1 شهر 4 مواد فيديو وتمارين 1 وقت للتفاعل مع الأسئلة والأجوبة وحدة التعلم الرقمي",
-      price: "$8",
+      price: "$5",
+      link: "https://www.paypal.com/ncp/payment/2SJ5X5YRHZM7Q",
     },
     {
       id: "2",
       name: "المستوى",
       description:
         "المدة 4 أشهر 16 مادة فيديو وتمارين 2 مرات تفاعل أسئلة وأجوبة وحدة التعلم الرقمي شهادة",
-      price: "$29",
+      price: "$19",
+      link: "https://www.paypal.com/ncp/payment/SM6AB8PLZEMCN",
     },
     {
       id: "3",
       name: "باقات كاملة",
       description:
         "المدة الزمنية 12 شهر 48 مادة فيديو وتمارين 6 مرات تفاعل أسئلة وأجوبة وحدة التعلم الرقمي الشهادة",
-      price: "$79",
+      price: "$49",
+      link: "https://www.paypal.com/ncp/payment/4ZTMUWXX86RZC",
     },
   ];
 
@@ -117,67 +119,159 @@ export function SignUpForm() {
         <div className="absolute mt-16 left-1/2 -translate-x-1/2 w-128 md:w-256 text-center after:content-[''] after:absolute after:left-1/2 after:-translate-x-1/2 after:w-1/2 after:border-b-4 after:border-gray-600"></div>
       </div>
       {successSignup ? (
-        <div className="min-h-dvh  flex items-center justify-center p-4 bg-slate-100">
-          <div className="bg-white rounded-lg shadow-xl p-8 max-w-md w-full text-center space-y-4 border border-blue-100">
-            <div className="mb-6">
-              <div className="mx-auto w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-4">
-                <svg
-                  className="w-8 h-8 text-green-500"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                </svg>
-              </div>
-
-              <div className="text-2xl font-bold text-gray-800 mb-2">
-                Complete the payment
-              </div>
+        <div className="bg-white rounded-lg shadow-xl p-8 w-full text-center space-y-4 border border-blue-100">
+          <div className="mb-6">
+            <div className="mx-auto w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-4">
+              <svg
+                className="w-8 h-8 text-green-500"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
             </div>
 
-            <p className="text-gray-600 mb-4">
-              Continue the transaction process to the following number, and wait
-              for the admin to create your account.{" "}
-              <div className="flex">
-                <TriangleAlert /> Save/Screenshot the payment result and send it
-                to the following number for further processing.
-              </div>
-            </p>
-            <Separator />
-            <p className="text-gray-600 mb-4">
-              قم بإكمال عملية الدفع إلى الرقم التالي، وانتظر حتى يقوم المسؤول
-              بإنشاء حسابك.{" "}
-              <div className="flex">
-                يُرجى حفظ أو التقاط لقطة شاشة لإثبات الدفع وإرسالها إلى الرقم
-                التالي لإكمال العملية.
-              </div>
-            </p>
-
-            <div className="pt-4 border-t border-gray-100 ">
-              <p className="text-gray-500 flex items-center justify-center gap-2">
-                <span>Admin Contact:</span>
-                <a
-                  className="underline text-blue-500 cursor-pointer"
-                  onClick={() => {
-                    if (waData) {
-                      sendDataToWhatsapp(waData);
-                    } else {
-                      alert("No data available to send.");
-                    }
-                  }}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  +62 851-8302-3566
-                </a>
-              </p>
+            <div className="text-2xl font-bold text-gray-800 mb-2">
+              Complete the payment
             </div>
+          </div>
+
+          <p className="text-gray-600 mb-4 text-left">
+            {" "}
+            To proceed with your registration, please complete the payment via
+            the link below :
+          </p>
+          <p className="text-gray-600 mb-4 text-left">
+            <strong>Payment Link : </strong>
+          </p>
+          <p className="text-left">
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href={
+                packages.find((pkg) => pkg.name === waData?.package_level)
+                  ?.link || "#"
+              }
+              className="text-blue-600 underline"
+            >
+              {waData?.package_level
+                ? `< الاشتراك ${waData.package_level} >`
+                : "Payment Link error"}
+            </a>
+          </p>
+          <p className="text-gray-600 mb-4 text-left">
+            <strong>After Payment : </strong>
+          </p>
+          <ul className="list-disc pl-5 space-y-2 mt-2 text-gray-600 text-left">
+            <li className="relative pl-4">
+              Take a screenshot or save the payment receipt.
+            </li>
+            <li className="relative pl-4">
+              Send the proof of payment via WhatsApp or Email to the admin at
+              the number below:
+            </li>
+          </ul>
+          <p className="text-gray-600 text-left">
+            <strong className="mb-2">
+              Admin Contact (for confirmation only):
+            </strong>
+          </p>
+          <p className="text-left">
+            <a
+              className=" text-blue-500 cursor-pointer"
+              onClick={() => {
+                if (waData) {
+                  sendDataToWhatsapp(waData);
+                } else {
+                  alert("No data available to send.");
+                }
+              }}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              +62 851-8312-8320
+            </a>
+          </p>
+          <p className=" text-blue-500 cursor-pointer text-left">
+            admin@arabinesia.com
+          </p>
+          <p className="text-gray-600 mb-4 text-left italic">
+            Note: Make sure to use an active WhatsApp number for a smooth
+            confirmation process.
+          </p>
+          <Separator />
+          <div className="rtl text-right font-arabic">
+            {" "}
+            <p className="text-gray-600 mb-4">
+              لإتمام عملية التسجيل، يرجى الدفع عبر الرابط التالي:
+            </p>
+            <p className="text-gray-600 mb-4">
+              <strong>رابط الدفع:</strong>
+            </p>
+            <p
+              className="text-right mb-2
+              "
+            >
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href={
+                  packages.find((pkg) => pkg.name === waData?.package_level)
+                    ?.link || "#"
+                }
+                className="text-blue-600 underline"
+              >
+                {waData?.package_level
+                  ? `< الاشتراك ${waData.package_level} >`
+                  : "Payment Link error"}
+              </a>
+            </p>
+            <p className="text-gray-600 mb-4">
+              <strong>بعد الدفع: </strong>
+              <ul className="list-disc pr-5 space-y-2 mt-2">
+                <li>يرجى حفظ أو التقاط لقطة شاشة لإثبات الدفع.</li>
+                <li>
+                  أرسل إثبات الدفع عبر واتساب إلى مسؤول الحساب على الرقم التالي:
+                </li>
+              </ul>
+            </p>
+            <p className="text-gray-600">
+              <strong className="mb-2">
+                رقم التواصل مع المسؤول (للتأكيد فقط):
+              </strong>
+              <br />
+            </p>
+          </div>
+          <p className=" text-right">
+            <a
+              className="underline text-blue-500 cursor-pointer"
+              onClick={() => {
+                if (waData) {
+                  sendDataToWhatsapp(waData);
+                } else {
+                  alert("No data available to send.");
+                }
+              }}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              +62 851-8312-8320
+            </a>
+          </p>
+          <p className="underline text-blue-500 cursor-pointer text-right">
+            admin@arabinesia.com
+          </p>
+          <div className="rtl text-right font-arabic">
+            <p className="text-gray-600 mb-4 italic">
+              ملاحظة: يرجى التأكد من استخدام رقم واتساب نشط لتسريع عملية
+              التأكيد.
+            </p>
           </div>
         </div>
       ) : (
@@ -242,6 +336,17 @@ export function SignUpForm() {
                   رقم واتساب :
                 </Label>
                 <div className="flex w-full">
+                  <PhoneInput
+                    {...register("phone_number")}
+                    placeholder="Enter your number"
+                    defaultCountry={selectedCountry?.alpha2 || "ID"}
+                    onCountryChange={(country) => {
+                      setCountryData(country);
+                      setSelectedCountry(country as Country);
+                    }}
+                    inline
+                    className="w-full border border-gray-500 px-4 py-5 rounded text-right"
+                  />
                   <CountryDropdown
                     onChange={(country) => {
                       setSelectedCountry(country);
@@ -256,17 +361,6 @@ export function SignUpForm() {
                     defaultValue={selectedCountry?.alpha3}
                     inline
                     className=" border border-gray-500 px-4 py-5 rounded text-right"
-                  />
-                  <PhoneInput
-                    {...register("phone_number")}
-                    placeholder="Enter your number"
-                    defaultCountry={selectedCountry?.alpha2 || "ID"}
-                    onCountryChange={(country) => {
-                      setCountryData(country);
-                      setSelectedCountry(country as Country);
-                    }}
-                    inline
-                    className="w-full border border-gray-500 px-4 py-5 rounded text-right"
                   />
                 </div>
                 {errors.phone_number && (

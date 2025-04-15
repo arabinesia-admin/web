@@ -10,11 +10,11 @@ export const AboutCourses = () => {
     >
       <div className="flex flex-col items-center mt-5">
         <h2 className="mb-10 ">
-          <span className=" text-teal-500">ARABINESIA</span> دورة
+          <span className=" text-teal-700">ARABINESIA</span> دورة
         </h2>
         <div className="flex flex-row flex-wrap justify-center gap-8">
           <motion.div
-            className="card1 flex flex-col justify-center items-center gap-8 border-2 border-solid border-slate-500 rounded-xl w-96 h-96 drop-shadow-xl hover:bg-emerald-500 hover:text-white hover:border-0 hover:shadow-xl transition-colors duration-500"
+            className="card1 flex flex-col justify-center items-center gap-8 border-2 border-solid border-slate-600 rounded-xl w-96 h-96 drop-shadow-xl hover:bg-emerald-500 hover:text-white hover:border-0 hover:shadow-xl transition-colors duration-500"
             initial={{ opacity: 0, y: -50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.5 }}
@@ -31,7 +31,7 @@ export const AboutCourses = () => {
             </div>
           </motion.div>
           <motion.div
-            className="card2 flex flex-col justify-center items-center gap-8 border-2 border-solid border-slate-500 rounded-xl w-96 h-96 drop-shadow-xl hover:bg-emerald-500 hover:text-white hover:border-0 hover:shadow-xl transition-colors duration-500"
+            className="card2 flex flex-col justify-center items-center gap-8 border-2 border-solid border-slate-600 rounded-xl w-96 h-96 drop-shadow-xl hover:bg-emerald-500 hover:text-white hover:border-0 hover:shadow-xl transition-colors duration-500"
             initial={{ opacity: 0, y: -50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 1.5 }}
@@ -53,7 +53,7 @@ export const AboutCourses = () => {
             </div>
           </motion.div>
           <motion.div
-            className="card3 flex flex-col justify-center items-center gap-8 border-2 border-solid border-slate-500 rounded-xl w-96 h-96 drop-shadow-xl hover:bg-emerald-500 hover:text-white hover:border-0 hover:shadow-xl transition-colors duration-500"
+            className="card3 flex flex-col justify-center items-center gap-8 border-2 border-solid border-slate-600 rounded-xl w-96 h-96 drop-shadow-xl hover:bg-emerald-500 hover:text-white hover:border-0 hover:shadow-xl transition-colors duration-500"
             initial={{ opacity: 0, y: -50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 2.5 }}
