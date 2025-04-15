@@ -6,7 +6,7 @@ export const ClassPackage = () => {
   return (
     <div
       id="class-package"
-      className="flex flex-col justify-center items-center bg-slate-50 min-h-screen p-4"
+      className="flex flex-col justify-center items-center bg-slate-50 min-h-screen pb-0 p-4"
     >
       <h2 className="font-arabic mb-10 mt-24 text-center">
         الباقة العربية الإندونيسية
@@ -25,9 +25,10 @@ export const ClassPackage = () => {
               باقة تعليمية شهرية يمكن مواصلتها أو إيقافها في أي وقت.
             </p>
             <div className="flex items-start justify-center text-xl">
+              <del>8</del>
               <span className="leading-none mr-1">$</span>
               <h2 className="leading-none">
-                <span className="text-6xl">8</span> / شهرياً
+                <span className="text-6xl">5</span> / شهرياً
               </h2>
             </div>
             <p className="text-center text-xl mt-10 w-full max-w-52 font-light font-arabic">
@@ -55,9 +56,10 @@ export const ClassPackage = () => {
               حزم تعلم اللغة الإندونيسية حسب الصف أو المستوى (أساسي/متوسط/متقدم)
             </p>
             <div className="flex items-start justify-center text-xl">
+              <del>29</del>
               <span className="leading-none mr-1">$</span>
               <h2 className="leading-none">
-                <span className="text-6xl">29</span> / المستوى
+                <span className="text-6xl">19</span> / المستوى
               </h2>
             </div>
             <p className="text-center text-xl mt-10 w-full max-w-52 font-light font-arabic">
@@ -85,9 +87,10 @@ export const ClassPackage = () => {
               الباقة التعليمية الكاملة من المستوى الأساسي إلى المستوى المتقدم
             </p>
             <div className="flex items-start justify-center text-xl">
+              <del>79</del>
               <span className="leading-none mr-1">$</span>
               <h2 className="leading-none">
-                <span className="text-6xl">79</span> / باقة
+                <span className="text-6xl">49</span> / باقة
               </h2>
             </div>
             <p className="text-center text-xl mt-10 w-full max-w-52 font-light font-arabic">

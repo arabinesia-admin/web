@@ -2,6 +2,7 @@
 import { AboutClass } from "@/components/landing-page/about-class";
 import { AboutCourses } from "@/components/landing-page/about-courses";
 import { ClassPackage } from "@/components/landing-page/class-package";
+import { ClassPreview } from "@/components/landing-page/class-preview";
 import { PageAbout } from "@/components/landing-page/page-about";
 import { PageBody } from "@/components/landing-page/page-body";
 import { Footer } from "@/components/landing-page/page-footer";
@@ -29,6 +30,7 @@ export default function Home() {
         <AboutCourses />
         <AboutClass />
         <ClassPackage />
+        <ClassPreview />
         <Footer />
         <RegisterButton />
       </main>
