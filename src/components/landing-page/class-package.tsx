@@ -8,10 +8,10 @@ export const ClassPackage = () => {
       id="class-package"
       className="flex flex-col justify-center items-center bg-slate-50 min-h-screen pb-0 p-4"
     >
-      <h2 className="font-arabic mb-10 mt-24 text-center">
+      <h2 className="font-arabic mb-10 mt-6 text-center">
         الباقة العربية الإندونيسية
       </h2>
-      <div className="flex flex-wrap justify-center gap-6">
+      <div className="flex flex-wrap justify-center gap-6 mb-4">
         <motion.div
           className="card1 flex flex-col justify-center items-center gap-8 border-2 border-solid border-slate-500 rounded-xl w-80 h-128 drop-shadow-xl transition-colors duration-500 group hover:bg-gradient-to-r from-teal-700 to hover:bg-emerald-500 hover:text-white hover:border-0 hover:shadow-xl"
           initial={{ opacity: 0, x: 50 }}
@@ -24,7 +24,7 @@ export const ClassPackage = () => {
             <p className="mb-6 text-center text-xl  font-light font-arabic">
               باقة تعليمية شهرية يمكن مواصلتها أو إيقافها في أي وقت.
             </p>
-            <div className="flex items-start justify-center text-xl">
+            <div className="flex items-start justify-center text-3xl">
               <del>8</del>
               <span className="leading-none mr-1">$</span>
               <h2 className="leading-none">
@@ -55,7 +55,7 @@ export const ClassPackage = () => {
             <p className="mb-6 text-center text-xl font-light font-arabic">
               حزم تعلم اللغة الإندونيسية حسب الصف أو المستوى (أساسي/متوسط/متقدم)
             </p>
-            <div className="flex items-start justify-center text-xl">
+            <div className="flex items-start justify-center text-3xl">
               <del>29</del>
               <span className="leading-none mr-1">$</span>
               <h2 className="leading-none">
@@ -86,7 +86,7 @@ export const ClassPackage = () => {
             <p className="mb-6 text-center text-xl font-light font-arabic">
               الباقة التعليمية الكاملة من المستوى الأساسي إلى المستوى المتقدم
             </p>
-            <div className="flex items-start justify-center text-xl">
+            <div className="flex items-start justify-center text-3xl">
               <del>79</del>
               <span className="leading-none mr-1">$</span>
               <h2 className="leading-none">

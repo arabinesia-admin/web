@@ -261,20 +261,6 @@ export async function updateWatchProgress(userId: string, videoId: string) {
   }
 }
 
-export async function signInWithGoogle() {
-  const supabase = await createClient();
-  const { data, error } = await supabase.auth.signInWithOAuth({
-    provider: "google",
-    options: {
-      redirectTo: "/dashboard",
-    },
-  });
-
-  if (data.url) {
-    redirect(data.url);
-  }
-}
-
 // Unused action :
 export async function handleSearch(query: string) {
   const supabase = await createClient();

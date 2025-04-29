@@ -4,7 +4,7 @@ export const AboutClass = () => {
       id="about-class"
       className="flex justify-center items-center bg-gradient-to-r from-emerald-400 to-teal-500"
     >
-      <div className="justify-center mt-28 text-slate-50 ">
+      <div className="justify-center mt-28 text-slate-50">
         <div className="flex justify-center gap-5 mb-10">
           <h2>ARABINESIA</h2>
           <h2>فصول</h2>
