@@ -97,25 +97,13 @@ export default function Navbar({
                     <Link href={link.href}>{link.name}</Link>
                   </Button>
                 ))}
-                {isAuthenticated ? (
-                  <Link
-                    className="flex flex-row gap-4 items-center justify-center font-rubik border-brand-primary border-2 rounded-lg p-3"
-                    href="/dashboard"
-                    aria-label="To the Dashboard"
-                  >
-                    {" "}
-                    <LogIn /> أدخل
-                  </Link>
-                ) : (
-                  <Link
-                    className="flex flex-row gap-4 items-center justify-center font-rubik border-brand-primary border-2 rounded-lg p-3"
-                    href={"/login"}
-                    aria-label="Login Button"
-                  >
-                    <LogIn /> أدخل
-                  </Link>
-                )}
-
+                <Link
+                  className="flex flex-row gap-4 items-center justify-center font-rubik border-brand-primary border-2 rounded-lg p-3"
+                  href={"/login"}
+                  aria-label="Login Button"
+                >
+                  <LogIn /> أدخل
+                </Link>
                 <SheetTrigger className="absolute top-4 right-4"></SheetTrigger>
               </div>
             </SheetContent>

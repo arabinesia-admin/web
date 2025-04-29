@@ -49,8 +49,8 @@ export async function POST(req: NextRequest) {
 
     if (!profile.package_level) {
       return NextResponse.json(
-        { message: "Buy the package first to login", error: true },
-        { status: 403 }
+        { message: "Complete the payment first before login", error: false },
+        { status: 200 }
       );
     }
 

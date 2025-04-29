@@ -53,6 +53,7 @@ export function VideoCard({
               height: "300",
               playerVars: {
                 autoplay: 1,
+                rel: 0,
               },
             }}
           />
