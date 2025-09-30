@@ -4,6 +4,7 @@ import { cookies } from "next/headers";
 
 export default function SignUpPage() {
   const userCookie = cookies().get("supabase-auth-token");
+
   return (
     <>
       <Navbar isAuthenticated={!!userCookie} />

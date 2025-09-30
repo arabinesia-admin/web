@@ -4,18 +4,19 @@ export const AboutClass = () => {
       id="about-class"
       className="flex justify-center items-center bg-gradient-to-r from-emerald-400 to-teal-500"
     >
-      <div className="justify-center mt-28 text-slate-50 ">
+      <div className="justify-center mt-28 text-slate-50">
         <div className="flex justify-center gap-5 mb-10">
           <h2>ARABINESIA</h2>
           <h2>فصول</h2>
         </div>
-        <div className="flex flex-row flex-wrap items-center justify-center gap-16">
+        <div className="flex flex-row flex-wrap items-center justify-center gap-16 rtl">
           <div className="flex flex-col items-center w-full max-w-80 mb-28 text-right rtl font-arabic">
-            <h2 className="my-5">الفئة المتقدمة</h2>
+            <h2 className="my-5">الفصل المبتدئ</h2>
             <p className="text-center text-xl">
-              يتضمن الفصل المتقدم فهم القواعد المتقدمة والمحادثات المتخصصة في
-              اللغة الإندونيسية مع مدة تعلم 4 أشهر أو 16 درساً 8 تمريناً ولقاءين
-              للأسئلة والأجوبة.
+              <span>ARABINESIA</span>يتضمن الفصل المبتدئ على فهم القواعد
+              الأساسية والتعبيرات الشائعة في اللغة الإندونيسية: مدة الدراسة: 4
+              أشهر ( 16 لقاء)، عدد تمرينات: 8 تمرينًا، لقاء مباشر: لقاءان عن بعد
+              عبر زوم.
             </p>
           </div>
           <div className="flex flex-col items-center w-full max-w-80 mb-28 text-right rtl font-arabic">
@@ -28,12 +29,11 @@ export const AboutClass = () => {
             </p>
           </div>
           <div className="flex flex-col items-center w-full max-w-80 mb-28 text-right rtl font-arabic">
-            <h2 className="my-5">الفصل المبتدئ</h2>
+            <h2 className="my-5">الفئة المتقدمة</h2>
             <p className="text-center text-xl">
-              <span>ARABINESIA</span>يتضمن الفصل المبتدئ على فهم القواعد
-              الأساسية والتعبيرات الشائعة في اللغة الإندونيسية: مدة الدراسة: 4
-              أشهر ( 16 لقاء)، عدد تمرينات: 8 تمرينًا، لقاء مباشر: لقاءان عن بعد
-              عبر زوم.
+              يتضمن الفصل المتقدم فهم القواعد المتقدمة والمحادثات المتخصصة في
+              اللغة الإندونيسية مع مدة تعلم 4 أشهر أو 16 درساً 8 تمريناً ولقاءين
+              للأسئلة والأجوبة.
             </p>
           </div>
         </div>

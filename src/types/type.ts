@@ -94,3 +94,13 @@ export interface SidebarItems {
   }>;
   extras?: ReactNode;
 }
+
+export type CreateProfile = {
+  full_name: string;
+  age: string;
+  job: string;
+  country: string;
+  phone_number: string;
+  email: string;
+  package_level: string;
+};

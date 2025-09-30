@@ -12,11 +12,11 @@ import { Country, CountryDropdown } from "@/components/country-dropdown";
 import { PhoneInput, CountryData } from "@/components/phone-input";
 import Link from "next/link";
 import { Separator } from "../ui/separator";
-import Image from "next/image";
+import { useProfileStore } from "@/lib/store";
+import { createProfile } from "@/actions/auth";
 
-export function SignUpForm() {
+export function UpdateProfile() {
   const [serverResponse, setServerResponse] = useState<string | null>(null);
-  const [showPassword, setShowPassword] = useState(false);
   const [selectedCountry, setSelectedCountry] = React.useState<Country | null>(
     null
   );
@@ -24,11 +24,11 @@ export function SignUpForm() {
   const [isTermsChecked, setIsTermsChecked] = useState(false);
   const [successSignup, setSuccessSignup] = useState(false);
   const [waData, setWaData] = useState<TWhatsappData>();
+  const { profile } = useProfileStore();
 
   const {
     register,
     handleSubmit,
-    watch,
     setValue,
     formState: { errors, isSubmitting },
   } = useForm<TSignUpSchema>({
@@ -40,26 +40,15 @@ export function SignUpForm() {
 
   async function SignupUser(formData: TSignUpSchema) {
     try {
-      const apiData = {
-        full_name: formData.full_name,
-        age: formData.age,
-        job: formData.job,
-        country: formData.country,
-        phone_number: formData.phone_number,
-        package_level: formData.package_level,
-        email: formData.email,
-        password: formData.password,
-      };
+      const email = profile?.email;
+      const id = profile?.id;
 
-      const response = await fetch("/api/signup", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(apiData),
-      });
+      if (!id || !email) {
+        return;
+      }
+      const response = await createProfile(id, email, formData);
 
-      if (response.status === 201) {
+      if (response.success) {
         const whatsappData = {
           name: formData.full_name,
           age: formData.age,
@@ -73,7 +62,7 @@ export function SignUpForm() {
         setWaData(whatsappData);
         setSuccessSignup(true);
       } else {
-        const errorData = await response.json();
+        const errorData = await response;
         setServerResponse(errorData.message);
       }
     } catch (error) {
@@ -115,7 +104,7 @@ export function SignUpForm() {
           !مرحبا بكم في الدورة أرابينيسيا
         </h1>
         <p className="text-balance text-muted-foreground mb-5">
-          Create new account
+          Create new profile
         </p>
         <div className="absolute mt-16 left-1/2 -translate-x-1/2 w-128 md:w-256 text-center after:content-[''] after:absolute after:left-1/2 after:-translate-x-1/2 after:w-1/2 after:border-b-4 after:border-gray-600"></div>
       </div>
@@ -159,14 +148,8 @@ export function SignUpForm() {
                 packages.find((pkg) => pkg.name === waData?.package_level)
                   ?.link || "#"
               }
-              className="flex items-center justify-center bg-sky-100 text-blue-600 underline border rounded w-auto"
+              className="text-blue-600 underline"
             >
-              <Image
-                src="/images/paypal_logo.png"
-                alt="arabinesia-cover"
-                width={50}
-                height={50}
-              />{" "}
               {waData?.package_level
                 ? `< الاشتراك ${waData.package_level} >`
                 : "Payment Link error"}
@@ -232,14 +215,8 @@ export function SignUpForm() {
                   packages.find((pkg) => pkg.name === waData?.package_level)
                     ?.link || "#"
                 }
-                className="flex items-center justify-center bg-sky-100 text-blue-600 underline border rounded w-auto"
+                className="text-blue-600 underline"
               >
-                <Image
-                  src="/images/paypal_logo.png"
-                  alt="arabinesia-cover"
-                  width={50}
-                  height={50}
-                />{" "}
                 {waData?.package_level
                   ? `< الاشتراك ${waData.package_level} >`
                   : "Payment Link error"}
@@ -394,59 +371,6 @@ export function SignUpForm() {
                   <p className="text-red-500">{`${errors.motivation.message}`}</p>
                 )}
               </div>
-
-              <div>
-                <Label htmlFor="email" className="text-right">
-                  Email :
-                </Label>
-                <input
-                  {...register("email")}
-                  type="email"
-                  placeholder="example@mail.com"
-                  className="w-full border border-gray-500 px-4 py-2 rounded text-right"
-                />
-                {errors.email && (
-                  <p className="text-red-500">{`${errors.email.message}`}</p>
-                )}
-              </div>
-
-              <div>
-                <Label htmlFor="password" className="text-right">
-                  Password :
-                </Label>
-                <input
-                  {...register("password")}
-                  type={showPassword ? "text" : "password"}
-                  className="w-full border border-gray-500 px-4 py-2 rounded text-right"
-                />
-                {errors.password && (
-                  <p className="text-red-500">{`${errors.password.message}`}</p>
-                )}
-              </div>
-              <div>
-                <Label htmlFor="confirmPassword" className="text-right">
-                  Confirm Password :
-                </Label>
-                <input
-                  {...register("confirmPassword", {
-                    validate: (value) =>
-                      value === watch("password") || "Passwords do not match",
-                  })}
-                  type={showPassword ? "text" : "password"}
-                  placeholder="Confirm password"
-                  className="w-full border border-gray-500 px-4 py-2 rounded text-right"
-                />
-                {errors.confirmPassword && (
-                  <p className="text-red-500">{`${errors.confirmPassword.message}`}</p>
-                )}
-                <button
-                  type="button"
-                  onClick={() => setShowPassword(!showPassword)}
-                  className="text-sm text-brand-dark hover:underline"
-                >
-                  {showPassword ? "Hide Password" : "Show Password"}
-                </button>
-              </div>
             </div>
             {/* Radio button */}
             <div className="flex flex-col gap-2  mt-5 text-right">
@@ -529,15 +453,15 @@ export function SignUpForm() {
             >
               {isSubmitting ? "Submitting..." : "Sign Up"}
             </button>
-            <div className="text-center text-sm flex justify-center mt-5">
-              Already have an account?{" "}
-              <Link href="/login">
-                <p className="underline-offset-2 text-brand-primary mx-1">
-                  Login
-                </p>
-              </Link>
-            </div>
           </form>
+          <div className="text-center text-sm flex justify-center mt-5">
+            Already have an account?{" "}
+            <Link href="/login">
+              <p className="underline-offset-2 text-brand-primary mx-1">
+                Login
+              </p>
+            </Link>
+          </div>
         </CardContent>
       )}
     </div>

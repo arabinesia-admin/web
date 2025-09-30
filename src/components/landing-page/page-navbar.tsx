@@ -49,27 +49,15 @@ export default function PageNavbar({
                 <Link href={link.href}>{link.name}</Link>
               </Button>
             ))}
-            {isAuthenticated ? (
-              <Link href={"/dashboard"}>
-                <Button
-                  className="border-brand-primary text-brand-primary font-rubik font-semibold hover:text-white hover:bg-brand-primary"
-                  variant="outline"
-                  aria-label="To the Dashboard"
-                >
-                  أدخل
-                </Button>
-              </Link>
-            ) : (
-              <Link href={"/login"}>
-                <Button
-                  className="border-brand-primary text-brand-primary font-rubik font-semibold hover:text-white hover:bg-brand-primary"
-                  variant="outline"
-                  aria-label="Login"
-                >
-                  أدخل
-                </Button>
-              </Link>
-            )}
+            <Link href={"/login"}>
+              <Button
+                className="border-brand-primary text-brand-primary font-rubik font-semibold hover:text-white hover:bg-brand-primary"
+                variant="outline"
+                aria-label="Login"
+              >
+                أدخل
+              </Button>
+            </Link>
           </div>
 
           <Sheet>

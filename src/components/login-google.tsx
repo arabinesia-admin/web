@@ -1,41 +1,51 @@
+// Perbaikan di komponen login
 "use client";
+import { signInWithGoogle } from "@/actions/auth";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import React, { useState } from "react";
-import { AlertDialog } from "./ui/alert-dialog";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 
-const LogInWithGoogle = () => {
-  const [isAlertOpen, setIsAlertOpen] = useState(false);
+export const LogInWithGoogle = () => {
+  const router = useRouter();
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleLogin = async () => {
+    setIsLoading(true);
+    try {
+      const result = await signInWithGoogle();
+
+      if (result?.error) {
+        throw result.error;
+      }
+
+      if (result?.url) {
+        window.location.href = result.url; // Navigasi ke URL OAuth
+      }
+    } catch (error) {
+      console.error("Login error:", error);
+      router.push("/error");
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   return (
-    <>
-      <Button
-        type="button"
-        variant="outline"
-        className="w-full"
-        onClick={() => setIsAlertOpen(true)}
-      >
-        {" "}
-        <Image
-          src="/svg/google.svg"
-          alt="google"
-          width={20}
-          height={20}
-          className="mr-2"
-        />
-        Login with Google
-      </Button>
-      <AlertDialog
-        isOpen={isAlertOpen}
-        setIsOpen={setIsAlertOpen}
-        onConfirm={async () => {
-          setIsAlertOpen(false);
-        }}
-        title="Under Maintenance"
-        description="We apologize for the inconvenience. The Google Provider Login feature is currently under maintenance. Please try again later."
+    <Button
+      type="button"
+      variant="outline"
+      className="w-full"
+      onClick={handleLogin}
+      disabled={isLoading}
+    >
+      <Image
+        src="/svg/google.svg"
+        alt="google"
+        width={20}
+        height={20}
+        className={`mr-2 ${isLoading ? "opacity-50" : ""}`}
       />
-    </>
+      {isLoading ? "Processing..." : "Login with Google"}
+    </Button>
   );
 };
-
-export default LogInWithGoogle;

@@ -1,5 +1,6 @@
 "use server";
 import { createClient } from "@/lib/supabase/server";
+import { CreateProfile } from "@/types/type";
 import { redirect } from "next/navigation";
 
 export async function getAuthUser() {
@@ -43,20 +44,58 @@ export async function checkAdmin() {
   return data;
 }
 
+// Perbaikan di server action (auth.ts)
 export async function signInWithGoogle() {
   const supabase = await createClient();
-  const { data, error } = await supabase.auth.signInWithOAuth({
-    provider: "google",
-    options: {
-      redirectTo: "/dashboard",
-    },
-  });
-  if (data.url) {
-    redirect(data.url);
+  try {
+    const { data, error } = await supabase.auth.signInWithOAuth({
+      provider: "google",
+      options: {
+        redirectTo: `${process.env.NEXT_PUBLIC_SITE_URL}/auth/callback`,
+        queryParams: {
+          access_type: "offline",
+          prompt: "consent",
+        },
+      },
+    });
+
+    if (error) {
+      console.log(error);
+      return { error }; // Return object dengan error
+    }
+
+    // Return URL redirect
+    return { url: data.url };
+  } catch (error) {
+    console.log(error);
+    return { error: new Error("Authentication failed") };
   }
 }
 
-export async function logOut() {
+export async function createProfile(
+  id: string,
+  email: string,
+  formData: CreateProfile
+) {
   const supabase = await createClient();
-  await supabase.auth.signOut();
+  try {
+    const { data, error } = await supabase.from("profiles").insert([
+      {
+        id,
+        full_name: formData.full_name,
+        age: formData.age,
+        job: formData.job,
+        country: formData.country,
+        phone_number: formData.phone_number,
+        package_level: formData.package_level,
+        email,
+      },
+    ]);
+    if (!data || error) {
+      return { success: false, message: "Failed create new profile" };
+    }
+    return { success: true, message: "200", data: data };
+  } catch (error) {
+    return { success: false, message: "Internal server error" };
+  }
 }

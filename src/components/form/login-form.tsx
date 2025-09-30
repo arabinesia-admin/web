@@ -10,7 +10,7 @@ import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { loginSchema, TLoginSchema } from "@/types/type";
-import LogInWithGoogle from "../login-google";
+import { LogInWithGoogle } from "../login-google";
 
 export function LoginForm() {
   const router = useRouter();
@@ -33,6 +33,11 @@ export function LoginForm() {
         body: JSON.stringify(data),
       });
       const result = await response.json();
+
+      if (result.message === "Complete the payment first before login") {
+        router.push("/payment");
+      }
+
       if (result.message === "Login Success") {
         if (typeof localStorage !== "undefined") {
           localStorage.setItem("ALREADY_LOGIN", JSON.stringify(true));
@@ -103,14 +108,13 @@ export function LoginForm() {
               >
                 {isSubmitting ? "Signing in..." : "Log in"}
               </Button>
-              <div className="relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t after:border-border">
+              {/* Google OAuth Login */}
+              {/* <div className="relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t after:border-border">
                 <span className="relative z-10 bg-background px-2 text-muted-foreground">
                   Or continue with
                 </span>
               </div>
-              <div className="flex">
-                <LogInWithGoogle />
-              </div>
+              <div className="flex"><LogInWithGoogle /></div> */}
               <div className="text-center text-sm flex justify-center">
                 Don&apos;t have an account?{" "}
                 <Link href="/signup">
